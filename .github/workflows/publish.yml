@@ -1,0 +1,27 @@
+name: Publish to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main  # adjust to your main branch name
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # adjust to your Java version
+
+      - name: Build and publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate
+          GPR_USER: ${{ github.actor }}
+          GPR_TOKEN: ${{ secrets.PACKAGES_PAT }}  # Personal Access Token for GitHub Packages
+        run: |
+          ./gradlew publish

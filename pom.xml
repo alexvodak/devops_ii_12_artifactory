@@ -10,7 +10,12 @@
 
 
   <distributionManagement>
-    <!--Write code here-->
+		 <repository>
+        <id>github</id>
+        <name>GitHub Packages</name>
+        <url>https://maven.pkg.github.com/alexvodak/devops_ii_12_artifactory</url>
+        <uniqueVersion>false</uniqueVersion>
+    </repository>
   </distributionManagement>
 
   <properties>
